@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1 class="mat-display-1">Task Management System</h1>
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <mat-card>
+                <mat-card-content>
+                    <nav mat-tab-nav-bar [tabPanel]="tabPanel">
+                        <a mat-tab-link [active]="isLoginActive" routerLink="/auth/login">Login</a>
+                        <a mat-tab-link [active]="isRegisterActive" routerLink="/auth/register">Register</a>
+                    </nav>
+                    <mat-tab-nav-panel #tabPanel>
+                        <router-outlet></router-outlet>
+                    </mat-tab-nav-panel>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

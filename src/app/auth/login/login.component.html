@@ -1,0 +1,17 @@
+<div class="row mt-3">
+    <div class="col">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+            <mat-form-field class="form-full-width" >
+                <mat-label for="username">Username</mat-label>
+                <input matInput formControlName="username">
+                <mat-error> *required </mat-error>
+            </mat-form-field>
+            <mat-form-field class="form-full-width">
+                <mat-label for="password">Password</mat-label>
+                <input matInput formControlName="password">
+                <mat-error> *required </mat-error>
+            </mat-form-field>
+            <button mat-flat-button type="submit" color="primary">LOGIN</button>
+        </form>
+    </div>
+</div>
