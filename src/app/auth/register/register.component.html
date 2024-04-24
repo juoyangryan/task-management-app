@@ -19,7 +19,7 @@
                     *Password and Confirm Password must match. 
                 </mat-error>
             </mat-form-field>
-            <button mat-flat-button type="submit" color="primary">Register</button>
+            <button mat-flat-button type="submit" color="primary" [disabled]="registerForm.invalid">Register</button>
         </form>
     </div>
 </div>

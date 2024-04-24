@@ -11,7 +11,7 @@
                 <input matInput formControlName="password">
                 <mat-error> *required </mat-error>
             </mat-form-field>
-            <button mat-flat-button type="submit" color="primary">LOGIN</button>
+            <button mat-flat-button type="submit" color="primary" [disabled]="loginForm.invalid">LOGIN</button>
         </form>
     </div>
 </div>
