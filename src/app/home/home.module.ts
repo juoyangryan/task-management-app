@@ -9,6 +9,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
@@ -37,7 +41,14 @@ import { DeleteQuoteComponent } from './delete-quote/delete-quote.component';
     MatIconModule, 
     MatButtonModule, 
     MatCardModule, 
-    MatDialogModule
+    MatDialogModule, 
+    ReactiveFormsModule, 
+    MatDatepickerModule, 
+    MatNativeDateModule, 
+    MatSelectModule
+  ], 
+  providers: [
+    MatDatepickerModule
   ]
 })
 export class HomeModule { }

@@ -1,2 +1,41 @@
-<h2 mat-dialog-title>Favorite Animal</h2>
-
+<h2 mat-dialog-title>Add New Quote</h2>
+<form [formGroup]="addQuoteForm" (ngSubmit)="onSubmit(addQuoteForm)" class="add-form">
+<mat-dialog-content>
+  <mat-form-field class="form-full-width">
+    <mat-label>Quote Type</mat-label>
+    <mat-select formControlName="quoteType">
+      <mat-option value="Auto">Auto</mat-option>
+      <mat-option value="Boat">Boat</mat-option>
+      <mat-option value = Home>Home</mat-option>
+      <mat-option value="General">General</mat-option>
+    </mat-select>
+    <mat-error>*Required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+    <mat-label>Sales</mat-label>
+    <input matInput formControlName="sales">
+    <mat-error>*Required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+    <mat-label>Premium</mat-label>
+    <input matInput formControlName="premium">
+    <mat-error>*Required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+    <mat-label>Due Date</mat-label>
+    <input matInput formControlName="dueDate" [matDatepicker]="picker">
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error>*Required</mat-error>
+  </mat-form-field>
+  <mat-form-field class="form-full-width">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+    <mat-error>*Required</mat-error>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button type="button" mat-dialog-close>Close</button>
+  <button mat-button type="submit" mat-dialog-close>Submit</button>
+</mat-dialog-actions>
+</form>

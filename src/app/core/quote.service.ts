@@ -28,13 +28,10 @@ export class QuoteService {
     });
   }
 
-  addQuotes(productName: string, productDescription: string) {
+  addQuotes(quoteData: any) {
     // should use injector but short on time
     let token = localStorage.getItem("access_token");
-    return this.http.post(`https://localhost:44366/api/quote`, {
-      ProductName: productName, 
-      ProductDescription: productDescription
-    }, {
+    return this.http.post(`https://localhost:44366/api/quote`, quoteData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
