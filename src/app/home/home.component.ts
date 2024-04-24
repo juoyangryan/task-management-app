@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { QuoteService } from '../core/quote.service';
+import { AuthService } from '../core/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,9 @@ import { QuoteService } from '../core/quote.service';
 export class HomeComponent implements OnInit{
 
   quotes: any
+  displayedColumns: string[] = ["QuoteID", "QuoteType", "Description", "Sales", "DueDate", "Premium", "Actions"]
 
-  constructor(private quoteService: QuoteService) {
+  constructor(private quoteService: QuoteService, private authService: AuthService, private router: Router,) {
 
   }
 
@@ -22,6 +25,15 @@ export class HomeComponent implements OnInit{
     this.quoteService.getQuotes().subscribe((response) => {
       this.quotes = response;
     })
+  }
+
+  handleLogout() {
+    this.authService.logout();
+    this.router.navigateByUrl('auth/login')
+  }
+
+  applyFilter(event: Event) {
+
   }
 
 }
