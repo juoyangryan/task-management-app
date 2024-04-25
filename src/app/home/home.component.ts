@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddQuoteComponent } from './add-quote/add-quote.component';
 import { UpdateQuoteComponent } from './update-quote/update-quote.component';
 import { DeleteQuoteComponent } from './delete-quote/delete-quote.component';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-home',
@@ -16,6 +17,7 @@ export class HomeComponent implements OnInit{
 
   quotes: any
   displayedColumns: string[] = ["QuoteID", "QuoteType", "Description", "Sales", "DueDate", "Premium", "Actions"]
+  dataSource = new MatTableDataSource();
 
   constructor(private quoteService: QuoteService, private authService: AuthService, private router: Router, public dialog: MatDialog) {
 
@@ -28,6 +30,7 @@ export class HomeComponent implements OnInit{
   handleGet() {
     this.quoteService.getQuotes().subscribe((response) => {
       this.quotes = response;
+      this.dataSource.data = this.quotes;
     })
   }
 
@@ -37,7 +40,8 @@ export class HomeComponent implements OnInit{
   }
 
   applyFilter(event: Event) {
-
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   openAddDialog(): void {

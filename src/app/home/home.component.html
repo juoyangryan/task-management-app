@@ -26,8 +26,8 @@
                         <mat-label>Filter</mat-label>
                         <input matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
                     </mat-form-field>
-                    <div class="mat-elevation-z8">
-                        <table mat-table [dataSource]="quotes">
+                    <div class="mat-elevation-z1">
+                        <table mat-table [dataSource]="dataSource">
                             <ng-container matColumnDef="QuoteID">
                                 <th mat-header-cell *matHeaderCellDef> No. </th>
                                 <td mat-cell *matCellDef="let row"> {{row.QuoteID}} </td>
