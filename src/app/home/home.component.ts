@@ -41,7 +41,11 @@ export class HomeComponent implements OnInit{
   }
 
   openAddDialog(): void {
-    let dialogRef = this.dialog.open(AddQuoteComponent)
+    let dialogRef = this.dialog.open(AddQuoteComponent, {
+      data: {
+        homeComponent: this
+      }
+    })
   }
 
   openUpdateDialog(): void {
