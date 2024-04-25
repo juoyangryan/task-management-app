@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/core/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -11,7 +12,7 @@ export class RegisterComponent {
   registerForm: FormGroup;
   // matcher = new ConfirmValidParentMatcher();
   
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private authService: AuthService) {
     this.registerForm = fb.group({
       username: ['', Validators.required], 
       password: ['', Validators.required], 
@@ -20,7 +21,12 @@ export class RegisterComponent {
   }
 
   onSubmit(form: FormGroup) {
-    console.log(form.value)
+    if (form.valid) {
+      this.authService.register(form.value.username, form.value.password).subscribe((response) => {
+        console.log(response);
+      })
+      console.log(form.value)
+    }
   }
 
   // validator: matching passwords

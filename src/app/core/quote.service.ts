@@ -39,8 +39,6 @@ export class QuoteService {
   }
 
   updateQuote(quoteData: any) {
-    console.log(quoteData);
-    
     // should use injector but short on time
     let token = localStorage.getItem("access_token");
     return this.http.put(`https://localhost:44366/api/quote`, quoteData, {

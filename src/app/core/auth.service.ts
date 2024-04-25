@@ -35,6 +35,18 @@ export class AuthService {
     this.isAuthenticatedSubject.next(true);
   }
 
+  register(username: string, password: string) {
+    let body = new URLSearchParams();
+    body.set("UserName", username);
+    body.set("Password", password);
+
+    let options = {
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
+    }
+
+    return this.http.post('https://localhost:44366/api/register', body.toString(), options);
+  }
+
   storeToken(token: string) {
     localStorage.setItem(this.access_token, token);
   }

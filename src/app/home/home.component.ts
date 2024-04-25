@@ -71,11 +71,11 @@ export class HomeComponent implements OnInit, AfterViewInit{
     })
   }
 
-  openDeleteDialog(Quote: any): void {
+  openDeleteDialog(QuoteID: any): void {
     let dialogRef = this.dialog.open(DeleteQuoteComponent, {
       data: {
         HomeComponent: this, 
-        Quote: Quote
+        QuoteID: QuoteID
       }
     })
   }
