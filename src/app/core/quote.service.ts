@@ -38,15 +38,12 @@ export class QuoteService {
     });
   }
 
-  updateProduct(ID: number, productName: string, productDescription: string) {
+  updateQuote(quoteData: any) {
+    console.log(quoteData);
     
     // should use injector but short on time
     let token = localStorage.getItem("access_token");
-    return this.http.put(`https://localhost:44366/api/quote/${ID}`, {
-      ID: ID, 
-      ProductName: productName, 
-      ProductDescription: productDescription
-    }, {
+    return this.http.put(`https://localhost:44366/api/quote`, quoteData, {
       headers: {
         Authorization: `Bearer ${token}`
       }
