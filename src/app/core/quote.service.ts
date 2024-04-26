@@ -18,6 +18,16 @@ export class QuoteService {
     });
   }
 
+  getQuoteById(id: number) {
+    // should use injector but short on time
+    let token = localStorage.getItem("access_token");
+    return this.http.get(`https://localhost:44366/api/quote/${id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
+  }
+
   deleteQuotes(id: number) {
     // should use injector but short on time
     let token = localStorage.getItem("access_token");

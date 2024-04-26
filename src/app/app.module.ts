@@ -7,6 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './auth/auth.module';
 import { HomeModule } from './home/home.module';
 import { CoreModule } from './core/core.module';
+import { QuoteDetailsModule } from './quote-details/quote-details.module';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CoreModule } from './core/core.module';
     HomeModule, 
     CoreModule, 
     BrowserModule,
+    QuoteDetailsModule, 
     AppRoutingModule,
     BrowserAnimationsModule
   ],

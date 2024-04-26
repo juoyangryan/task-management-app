@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, ValidatorFn, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/core/auth.service';
+import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,7 @@ export class RegisterComponent {
   registerForm: FormGroup;
   // matcher = new ConfirmValidParentMatcher();
   
-  constructor(private fb: FormBuilder, private authService: AuthService) {
+  constructor(private fb: FormBuilder, private authService: AuthService, private _snackbar: MatSnackBar) {
     this.registerForm = fb.group({
       username: ['', Validators.required], 
       password: ['', Validators.required], 
@@ -22,10 +23,22 @@ export class RegisterComponent {
 
   onSubmit(form: FormGroup) {
     if (form.valid) {
-      this.authService.register(form.value.username, form.value.password).subscribe((response) => {
-        console.log(response);
+      this.authService.register(form.value.username, form.value.password).subscribe({
+        next: (response) => {
+          this._snackbar.open("Registration Successful!", "Close", {
+            horizontalPosition: "end" as MatSnackBarHorizontalPosition, 
+            verticalPosition: "top" as MatSnackBarVerticalPosition
+          })
+        }, 
+        error: (error) => {
+          console.log(error);
+          
+          this._snackbar.open(error.error.Message, "Close", {
+            horizontalPosition: "end" as MatSnackBarHorizontalPosition, 
+            verticalPosition: "top" as MatSnackBarVerticalPosition
+          })
+        }
       })
-      console.log(form.value)
     }
   }
 

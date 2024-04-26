@@ -80,4 +80,8 @@ export class HomeComponent implements OnInit, AfterViewInit{
     })
   }
 
+  navigateToDetails(QuoteID: any) {
+    this.router.navigate(['/quote-details', QuoteID])
+  }
+
 }

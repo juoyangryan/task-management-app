@@ -1,0 +1,65 @@
+<div class="container-fluid">
+    <div class="row justify-content-between">
+        <div class="col">
+            <h1 class="mat-display-1" color="primary">Task Management System</h1>
+        </div>
+        <div class="col-auto mt-1">
+            <button type="button" class="btn btn-link" (click)="handleLogout()">Logout</button>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <img [src]="loadImage(quoteItem.QuoteType)" alt="type image" style="width: 400px"/>
+        </div>
+        <div class="col-4">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h3>Quote ID</h3>
+        </div>
+        <div class="col-4">
+            {{quoteItem.QuoteID}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h3>Quote Type</h3>
+        </div>
+        <div class="col-4">
+            {{quoteItem.QuoteType}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h3>Sales Person</h3>
+        </div>
+        <div class="col-4">
+            {{quoteItem.Sales}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h3>Premium Amount</h3>
+        </div>
+        <div class="col-4">
+            {{quoteItem.Premium | currency}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h3>Due Date</h3>
+        </div>
+        <div class="col-4">
+            {{quoteItem.DueDate | date: "shortDate"}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-4">
+            <h3>Description</h3>
+        </div>
+        <div class="col-4">
+            {{quoteItem.Description}}
+        </div>
+    </div>
+</div>
